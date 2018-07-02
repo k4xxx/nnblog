@@ -1,0 +1,164 @@
+{% extends 'manage/base.html' %}
+
+{% block head %}
+    <title>后台管理|用户管理</title>
+{% endblock %}
+
+{% block user_link %}active{% endblock %}
+
+{% block content %}
+
+    <!---------------------------用户管理页面开始---------------------------------->
+
+    <div class="row">
+        <!-------------------------------------左侧修改信息卡---------------------------------------------->
+        <div class="col-sm-7">
+            <div class="update-card-left">
+                <h3 class="text-center">用户信息修改</h3>
+                <div class="info-title">用户名<span class="error-msg"></span></div>
+                <div class="input-group margin-bottom-sm">
+                    <span class="input-group-addon"><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i></span>
+                    <input id="usr-inp" name="username" class="form-control not-null-iput" type="text"
+                           placeholder="请输入您的登录名" autocomplete="off" value="{{ request.user.username }}" disabled>
+                </div>
+
+                <div class="info-title">昵称<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-id-card-o fa-fw"></i></span>
+                    <input id="nickname-inp" name="nickname" class="form-control not-null-iput" type="text"
+                           placeholder="请输入您的昵称" autocomplete="off" value="{{ request.user.nick_name }}">
+                </div>
+
+                <div class="info-title">手机<span class="error-msg"></span></div>
+                <span class="error-msg"></span>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+                    <input id="telephone-inp" name="telephone" class="form-control" type="text" placeholder="请输入您的电话"
+                           autocomplete="off" value="{{ request.user.telephone }}">
+                </div>
+
+                <div class="info-title">邮箱<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                    <input id="email-inp" name="email" class="form-control" type="text" placeholder="请输入您的邮箱"
+                           autocomplete="off"  value="{{ request.user.email }}">
+                </div>
+
+                <div class="info-title">QQ<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-qq fa-fw"></i></span>
+                    <input id="qq-inp" name="qq" class="form-control" type="text" placeholder="请输入您的QQ"
+                           autocomplete="off"  value="{{ request.user.qq }}">
+                </div>
+
+                <div class="info-title">站点后缀<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+                    <input id="site-inp" name="site" class="form-control" type="text" placeholder="请输入您的站点后缀"
+                           autocomplete="off"  value="{{ request.user.blog.bottom_url }}">
+                </div>
+
+                <div class="info-title">站点名称<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-tag fa-fw"></i></span>
+                    <input id="site-title-inp" name="site" class="form-control" type="text" placeholder="请输入您的站点名称"
+                           autocomplete="off"  value="{{ request.user.blog.title }}">
+                </div>
+
+                <div class="info-title">个性签名<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <textarea id="signature" class="signature-area">{{ request.user.signature }}</textarea>
+                </div>
+
+                <div id="update-msg-btn" class="fluid ui buttons">
+                    <button id="update-info-submit-btn" class="ui positive  button" type="button"><span class="btn-font">提交</span></button>
+                    <div class="or" data-text="or"></div>
+                    <button id="reset-msg-btn" type="button" class="ui blue button"><span class="btn-font">重置</span></button>
+        </div>
+            </div>
+        </div>
+
+        <!-------------------------------------右侧修改信息卡---------------------------------------------->
+        <div class="col-sm-5">
+            <div class="update-card-right">
+                <h3 class="text-center">用户头像和密码修改</h3>
+                <div class="update-avatar">
+                    <label>
+                        <img id="avatar-img" src="/media/{{ request.user.avatar }}" alt="头像图片" title="点击修改头像">
+                        <input type="file" id="avatar-file-inp">
+                    </label>
+                </div>
+
+                <div class="update-wechat">
+                    <label>
+                        <img id="wechat-img" src="/media/{{ request.user.wechat }}" alt="微信二维码" title="点击修改微信二维码">
+                        <input type="file" id="wechat-file-inp">
+                    </label>
+                </div>
+
+
+                <div class="info-title">原密码<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+                    <input id="pwd-inp" name="password" class="form-control" type="password"
+                           placeholder="请输入您的登录密码" autocomplete="off">
+                </div>
+                <span class="error-msg"></span>
+
+                <div class="info-title">新密码<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input id="pwd-inp1" name="password2" class="form-control not-null-iput" type="password"
+                           placeholder="请确认您的登录密码" autocomplete="off">
+                </div>
+
+                <div class="info-title">新密码<span class="error-msg"></span></div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                    <input id="pwd-inp2" name="password2" class="form-control not-null-iput" type="password"
+                           placeholder="请确认您的登录密码" autocomplete="off">
+                </div>
+
+
+                <div id="update-pwd-btn" class="fluid ui buttons">
+                    <button id="update-pwd-submit-btn" class="ui positive  button" type="button"><span class="btn-font">提交</span></button>
+                    <div class="or" data-text="or"></div>
+                    <button id="reset-btn" type="button" class="ui blue button"><span class="btn-font">重置</span></button>
+        </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!---------------------------用户管理页面结束---------------------------------->
+
+
+    <!------------------------------置顶模态框开始------------------------------------->
+    <div class="cover hiden"></div>
+    {#<div class="zhiding-modal hiden">#}
+    {#    <div class="info">确定要将此博客置顶？</div>#}
+    {#    <button class="btn btn-info">确定</button>#}
+    {#    <button class="btn btn-danger zhiding-close-btn">取消</button>#}
+    {#</div>#}
+
+    <div class="suo-modal hiden">
+        <form action="" autocomplete="off">
+            <div class="info">设置/取消密码</div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                <input class="form-control" type="password" name="password" placeholder="不输密码即为解锁">
+            </div>
+            <button type="button" class="btn btn-info set-pwd-btn">提交</button>
+            <button type="button" class="btn btn-danger suo-close-btn">取消</button>
+        </form>
+    </div>
+    <!------------------------------置顶模态框结束------------------------------------->
+{% endblock %}
+
+{% block script %}
+{#    <script src="/blog/static/js/admin.js"></script>#}
+    {#    <canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>#}
+    {#    <script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>#}
+{% endblock %}
+

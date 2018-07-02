@@ -1,0 +1,70 @@
+{% extends 'manage/base.html' %}
+
+{% block head %}
+    <title>后台管理|博客管理</title>
+{% endblock %}
+
+{% block category_link %}active{% endblock %}
+
+{% block content %}
+
+    <!---------------------------管理分类页面开始---------------------------------->
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">博客分类管理</h3>
+                </div>
+                <div class="panel-body">
+                    <!-----------------博客列表开始---------------------------------->
+                    <table class="category-table table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>分类标题</th>
+                            <th class="mycenter">分类描述</th>
+                            <th class="mycenter">编辑</th>
+                            <th class="mycenter">删除</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for cate in data_list %}
+                        <tr>
+                            <input class="cate_id_inp" type="hidden" name="cate_id" value="{{ cate.nid }}">
+                            <td class="cate-title">{{ cate.title }}</td>
+                            <td class="cate-info">{{ cate.desc }}</td>
+                            <td class="edit-td"><a><i class="fa fa-pencil edite-category-inco" aria-hidden="true"></i></a></td>
+                            <td class="delete-td"><i class="fa fa-trash-o fa-lg delete-cate-icon"></i></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <button id="add-category-btn" type="button" class="btn btn-info btn-lg btn-block">添加新的分类</button>
+
+            </div>
+
+    <!---------------------------管理分类页面结束---------------------------------->
+            <!---------------------------------------------分页开始------------------------------------------------->
+        <div class="topicListFooter text-center">
+            <ul class="pagination">
+                {{ page_html|safe }}
+             </ul>
+        </div>
+        <!---------------------------------------------分页结束------------------------------------------------->
+    <!------------------------------新增或面积分类模态框开始---------------------------------->
+    <div class="cover hiden"></div>
+    <div class="category-modal hiden">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input class="form-control" type="text" placeholder="请输入分类名称" autocomplete="off">
+        </div>
+        <textarea class="category-info-area" placeholder="请添加分类描述"></textarea>
+        <div id="category-btn-group" class="fluid ui buttons">
+            <button id="handle-category-btn" class="ui blue  button">提交</button>
+            <div class="or" data-text="or"></div>
+            <button id="category-modal-close-btn" class="ui positive button">取消</button>
+        </div>
+    </div>
+    <!------------------------------新增或编辑分类模态框结束---------------------------------->
+{% endblock %}
+
+{% block script %}
+{% endblock %}

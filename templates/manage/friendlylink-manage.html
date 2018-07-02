@@ -1,0 +1,73 @@
+{% extends 'manage/base.html' %}
+
+{% block head %}
+    <title>后台管理|友情链接</title>
+{% endblock %}
+
+{% block link_link %}active{% endblock %}
+
+{% block content %}
+
+    <!---------------------------管理分类页面开始---------------------------------->
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">友情链接管理</h3>
+                </div>
+                <div class="panel-body">
+                    <!-----------------博客列表开始---------------------------------->
+                    <table class="category-table table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>链接标题</th>
+                            <th>链接地址</th>
+                            <th class="mycenter">编辑</th>
+                            <th class="mycenter">删除</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for link in data_list %}
+                        <tr>
+{#                        ididididi{{ link.nid }}#}
+                            <input type="hidden" value='{{ link.nid }}' class="link_id_inp">
+                            <td class="link-title">{{ link.title }}</td>
+                            <td class="link-url">{{ link.url }}</td>
+                            <td class="edit-td"><a><i class="fa fa-pencil edit-link-inco" aria-hidden="true"></i></a></td>
+                            <td class="delete-td"><i class="fa fa-trash-o fa-lg delete-link-icon"></i></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                <button id="add-frindlink-btn" type="button" class="btn btn-info btn-lg btn-block">添加新的友情链接</button>
+
+            </div>
+    <!---------------------------管理分类页面结束---------------------------------->
+            <!---------------------------------------------分页开始------------------------------------------------->
+        <div class="topicListFooter text-center">
+            <ul class="pagination">
+                {{ page_html|safe }}
+             </ul>
+        </div>
+        <!---------------------------------------------分页结束------------------------------------------------->
+    <!------------------------------新增或面积分类模态框开始---------------------------------->
+    <div class="cover hiden"></div>
+    <div class="friendlink-modal hiden">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+            <input class="form-control" name='blog_title' type="text" placeholder="请输入链接标题" autocomplete="off">
+        </div>
+        <textarea class="link-url-area" placeholder="请输入链接地址"></textarea>
+        <div id="friend-btn-group" class="fluid ui buttons">
+            <button id="handle-link-btn" class="ui blue button">提交</button>
+            <div class="or" data-text="or"></div>
+            <button id="friend-modal-close-btn" class="ui positive button">取消</button>
+        </div>
+    </div>
+    <!------------------------------新增或面积分类模态框结束---------------------------------->
+{% endblock %}
+
+{% block script %}
+{#    <canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>#}
+{#    <script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>#}
+{% endblock %}
+

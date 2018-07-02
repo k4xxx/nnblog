@@ -1,0 +1,115 @@
+<div id="sideBar">
+            <div id="sideBarMain">
+                <div class="card">
+                    <div class="header">博主信息</div>
+                    <div class="content">
+                        <div class="avatar"><img src="/media/{{ user.avatar }}"></div>
+                        <div class="info">
+                        <div>昵称：{{ user.nick_name }}</div>
+                        <div>注册：{{ user.create_time|date:'Y-m-d' }}</div>
+                        <div>邮箱：{{ user.email }}</div>
+                        <div>微信：
+                        <a id="met-weixins">
+                                <i class="fa fa-weixin" onMouseOut="hideImg()"  onmouseover="showImg()"></i>
+                                <div id="wxImg" style="display:none;height:50px;back-ground:#f00;position:absolute;">
+                                <img src="/media/{{ user.wechat }}"></div>
+                            </a>
+                        </div>
+                        <div>文章：{{ user.article_set.all.count }} 篇</div>
+                        </div>
+                    </div>
+                </div>
+                <!--done-->
+                <div class="card">
+                    <div class="header">个人签名</div>
+                    <div class="content">
+                        {{ user.signature }}
+
+                    </div>
+                </div>
+
+
+                <div class="card">
+                <div class="header">搜索</div>
+                <div class="content search-box">
+                    <form action="/{{ bottom_url }}/articles/search" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" id="bottom_url" value="{{ bottom_url }}">
+                        <div class="input-group">
+                            <input type="text" id="article_search_input" name="keyword" class="form-control"
+                                   placeholder="输入关键字搜索...">
+                                <span class="input-group-btn">
+                                    <button id="article_search_btn" class="btn btn-default" type="button">
+                                        Go!
+                                    </button>
+                                </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+                <div>
+                <div class="card">
+                    <div class="header">文章分类</div>
+                    <div class="content">
+                    <ul>
+                    {% for i in category_title_and_count %}
+                        <li>
+                            <a href="/{{ bottom_url }}/articles/category/{{ i.title }}">
+                                {{ i.title }}({{ i.count }})
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="header">文章档案</div>
+                    <div class="content">
+                    <ul>
+                        {% for t in article_time_and_count %}
+                            <li><a href="/{{ bottom_url }}/articles/archive/{{ t.time_ym }}">{{ t.time_ym }}({{ t.c }})</a></li>
+                        {% endfor %}
+                    </ul>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="header">友情链接</div>
+                    <div class="content">
+                    <ul>
+                        {% for link in link_list %}
+                            <li><a target="_blank" href={{ link.url }} title="{{ link.title }}">{{ link.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+{#            <div class="card">#}
+{#                <div class="header">推荐排行榜</div>#}
+{#                <div class="content">#}
+{#                    <ul>#}
+{#                        <li><a href="">1. MySQL 之 视图、触发器(7)</a></li>#}
+{#                        <li><a href="">2. Python基础（一）(4)</a></li>#}
+{#                        <li><a href="">3. MySQL 之 索引原理与慢查询优化(1)</a></li>#}
+{#                        <li><a href="">4. MySQL之表的约束(1)</a></li>#}
+{#                    </ul>#}
+{#                    </div>#}
+{#            </div>#}
+
+            </div><!--end: sideBarMain -->
+</div><!--end: sideBar 侧边栏容器 -->

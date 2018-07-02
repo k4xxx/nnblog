@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+{% load static %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   {% load static %}
+   <!--ico-->
+    <link href="{% static 'img/icon/icon.ico' %}" rel="shortcut icon" type="image/x-icon"/>
+    <!--ico-->
+
+    <!--博客主题-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bundle-SimpleMemory.css' %}">
+    <link id="MainCss" type="text/css" rel="stylesheet" href="{% static 'css/blog-common.css' %}">
+    <!--博客主题-->
+    <!--semantic ui 框架-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugin/semantic/semantic.min.css' %}">
+    <!--awesme图标-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugin/awesome/css/font-awesome.min.css' %}">
+    <!--bootstrap框架-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugin/bootstrap/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'plugin/sweetalert/sweetalert.css' %}">
+
+
+
+{% block head %}
+{% endblock %}
+{% load mytags %}
+</head>
+
+
+<script type="text/javascript">
+    //显示微信二维码
+    function  showImg(){
+        $('#wxImg').fadeIn(1000)
+    }
+    function hideImg(){
+        $('#wxImg').fadeOut(1000)
+    }
+</script>
+<body>
+
+<!--done-->
+
+
+<div id="home">
+
+    <div id="header">
+
+        <span id="zhuangbi">
+                <i class="fa fa-wifi" aria-hidden="true"></i>&nbsp;
+                <i class="fa fa-signal" aria-hidden="true"></i>&nbsp;
+                <i class="fa fa-bluetooth" aria-hidden="true"></i>&nbsp;
+                <i class="fa fa-battery-full" aria-hidden="true"></i>&nbsp;
+                <span id="time"></span>
+                </span>
+        <div id="blogTitle">
+            <!--done-->
+            <h1><a class="headermaintitle" href="">{{ blog.title }}</a></h1>
+
+        <script>
+            function mytime(){
+                var t = new Date();
+                var h = t.getHours();
+                var s = t.getMinutes();
+                if(h<10){h="0"+h}
+                if(s<10){s="0"+s}
+                $("#time").html(h+':'+s);
+            }
+            setInterval(function() {mytime()},1000);
+        </script>
+
+        </div><!--end: blogTitle 博客的标题和副标题 -->
+        <div id="navigator">
+            <ul id="navList">
+                <li><a class="menu" href="/">网站首页</a>
+                <li><a class="menu" href="/{{ blog.bottom_url }}">博客首页</a></li>
+                <li><a class="menu" rel="nofollow" href="{% url 'article_manage' handle='add' article_id='' %}">发表博客</a></li>
+                <li>
+                    <a class="menu classify-menu" href="">博客分类</a>
+                </li>
+                <li><a class="menu" rel="nofollow" href="">博主简介</a></li>
+                <li><a class="menu" rel="nofollow" href="/manage/article">后台管理</a></li>
+            </ul>
+        <!----------------------------登录状态信息------------------------------->
+            <div id="loginInfo-icon">
+                {% if request.user.username == '' %}
+                    <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i>
+                {% else  %}
+                    <i class="fa fa-smile-o fa-2x" aria-hidden="true"></i>
+                {% endif %}
+            </div>
+
+        <div id="loginInfo">
+            {% if request.user.username == '' %}
+                <div><i class="fa fa-address-book" aria-hidden="true"></i><a href="/login"> 登陆</a></div>
+                <div><i class="fa fa-plus-square" aria-hidden="true"></i><a href="/register"> 注册</a></div>
+            {% else  %}
+                <div><i class="fa fa-heart" aria-hidden="true"></i>
+                <a href="/{{ request.user.blog.bottom_url }}">我的</a></div>
+                <div>&nbsp;<i class="fa fa-blind" aria-hidden="true"></i><a href="/logout"> 退出</a></div>
+            {% endif %}
+        </div>
+            <!----------------------------登录状态信息------------------------------->
+
+            <!--end: blogStats -->
+        </div><!--end: navigator 博客导航栏 -->
+    </div><!--end: header 头部 -->
+
+    <div id="main">
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+        {% block content %}
+
+
+        {% endblock %}
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+        {% getSideBar bottom_url%}
+
+        <div class="clear"></div>
+    </div><!--end: main -->
+    <div class="clear"></div>
+    <div id="footer" class="text-center">
+
+        <!--done-->
+        Copyright ©2015 牛奶博客园
+    </div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/plugin/semantic/semantic.min.js"></script>
+<script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/plugin/toastr/toastr.min.js"></script>
+<script src="/static/plugin/sweetalert/sweetalert.min.js"></script>
+<script src="/static/js/csrf-init.js"></script>
+<script src="/static/js/home.js"></script>
+<script src="/static/js/article.js"></script>
+{% block script %}
+
+{% endblock %}
+<!-- 背景动画 -->
+{#<canvas id="c_n9" width="1920" height="990"#}
+{#        style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>#}
+{#<script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>#}
+</body>
+</html>

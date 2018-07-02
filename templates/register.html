@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适应手机端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+   <!--ico-->
+    <link href="{% static 'img/icon/icon.ico' %}" rel="shortcut icon" type="image/x-icon"/>
+    <!--ico-->
+    <!--semantic ui 框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/semantic/semantic.min.css">
+    <!--bootstrap框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/bootstrap/css/bootstrap.min.css">
+    <!--awesme图标-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/plugin/switch/bootstrap-switch.min.css">
+    <!--toastr 弹出框框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/static/plugin/sweetalert/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
+
+
+    <title>注册页面</title>
+</head>
+<body>
+
+
+<div class="register-box container text-center">
+    <div class="register-msg"><h1>博客注册</h1></div>
+    <hr>
+    <form id="register-form" class="register-form" autocomplete="off">
+        {% csrf_token %}
+        <div class="info-title">登录名称<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group margin-bottom-sm">
+            <span class="input-group-addon"><i class="fa fa-address-book-o fa-fw" aria-hidden="true"></i></span>
+            <input id="usr-inp" name="username" class="form-control" type="text" placeholder="请输入您的登录名" autocomplete="off">
+            <span class="input-group-addon  checke-icon">*</span>
+        </div>
+        <div class="info-title">用户密码<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+            <input id="pwd-inp" name="password" class="form-control" type="password" placeholder="请输入您的登录密码" autocomplete="off">
+        <span class="input-group-addon  checke-icon">*</span>
+        </div><span class="error-msg"></span>
+
+        <div class="info-title">重复密码<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+            <input id="pwd-inp2" name="password2" class="form-control" type="password" placeholder="请确认您的登录密码" autocomplete="off">
+            <span class="input-group-addon  checke-icon">*</span>
+        </div><span class="error-msg"></span>
+
+                <div class="info-title">用户昵称<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-id-card-o fa-fw"></i></span>
+            <input id="nickname-inp" name="nickname" class="form-control" type="text" placeholder="请输入您的昵称" autocomplete="off">
+            <span class="input-group-addon  checke-icon">*</span>
+        </div><span class="error-msg"></span>
+
+        <div id="telephone-inp" class="info-title">电话号码<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-phone fa-fw"></i></span>
+            <input id="telephone-inp" name="telephone" class="form-control" type="text" placeholder="请输入您的电话" autocomplete="off">
+            <span class="input-group-addon  checke-icon">.</span>
+        </div>
+
+        <div class="info-title">用户邮箱<span class="error-msg my-hidden">必填项，您还没有输入内容</span></div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+            <input id="email-inp" name="email" class="form-control" type="text" placeholder="请输入您的邮箱" autocomplete="off">
+            <span class="input-group-addon  checke-icon">.</span>
+        </div>
+
+     <div class="agreement">
+            是否同意<a href="/agreement">用户协议</a>&nbsp;&nbsp;&nbsp;
+             <input id="agreement" type="checkbox" name="agreement" data-size="mini" data-on-color="success" data-off-color="warning" data-handle-width="38"
+                                           data-off-text="不同意" data-on-text="同意" data-label-width="35" value="0">
+        </div>
+
+        <div id="register-btn-group" class="fluid ui buttons">
+            <button id="register-submit-btn" class="ui positive  button" type="button"><span class="btn-font">注册</span></button>
+            <div class="or" data-text="or"></div>
+            <button id="reset-btn" type="button" class="ui blue button"><span class="btn-font">重置</span></button>
+        </div>
+
+    </form>
+</div>
+
+<!--------------------------------------------------------------->
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/plugin/semantic/semantic.min.js"></script>
+<script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/plugin/switch/bootstrap-switch.min.js"></script>
+<script src="/static/plugin/sweetalert/sweetalert.min.js"></script>
+<script src="/static/plugin/toastr/toastr.min.js"></script>
+<script src="/static/js/csrf-init.js"></script>
+<script src="/static/js/register.js"></script>
+
+<script type="text/javascript">
+    $("[name='agreement']").bootstrapSwitch();
+</script>
+<!--------------------------------------------------------------->
+</body>
+</html>

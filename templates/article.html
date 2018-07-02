@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title>博客详情</title>
+    <script>
+
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <div id="user" username="{{ request.user.nick_name }}" avatar="{{ request.user.avatar }}"></div>
+    <div id="mainContent">
+        <div class="forFlow">
+
+            <div id="post_detail">
+                <!--done-->
+                <div id="topics">
+                    <div class="post">
+                        <h1 class="postTitle">
+                                <a id="cb_post_title_url" class="postTitle2"
+                                   href="">{{ article.title }}</a>
+                                {% if article.password != '' %}
+                                    <i class="fa fa-lock" aria-hidden="true"  title="该博客已上锁"></i>
+                                {% endif %}
+                                {% if article.ispost == 0 %}
+{#                                <span style="color: red">未发布</span>#}
+                                <i class="fa fa-file-word-o" aria-hidden="true"  title="该博客未发布"></i>
+                                {% endif %}
+
+                        </h1>
+                        <div class="clear"></div>
+                        <div class="postBody">
+                            <div id="cnblogs_post_body" class="blogpost-body">
+
+                                {{ article.articledetail.content|safe }}
+
+                            </div>
+                            <div id="MySignature"></div>
+                            <div class="clear"></div>
+                            <div id="blog_post_info_block">
+
+                                <script type="text/javascript">
+                                    currentDiggType = 0;
+                                </script>
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+                    <hr>
+                    <p></p><p></p><p></p>
+                        <div class="post_desc">
+                         <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span class="post-desc">@<a href="/{{ bottom_url }}">{{ user.nick_name }}</a></span>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="post-desc">{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
+                        {% if request.user == user %}
+                            <a href="/manage/article/update/{{ article.pk }}" rel="nofollow">编辑</a>
+                        {% endif %}
+                        </div>
+                    </div>
+
+
+
+                <!------------评论点赞和踩灭--------------------->
+                <div class="comment-updown">
+                     <!--博客id-->
+                    <input hidden id="article_id" value="{{ article.pk }}">
+                    <span id="comment-icon">
+                        <i class="fa fa-commenting" aria-hidden="true"></i>
+                        <span class="count">评论(<span id="comment_count">{{ article.comment_count }}</span>)</span>
+                    </span>
+                    <span class="up-icon">
+                        <i class="fa fa-thumbs-up" aria-hidden="true">
+                            <div class="plus1 my-hidden">+1</div>
+                        </i>
+                        <span class="count">点赞(<span class="up_count">{{ article.up_count }}</span>)</span>
+                    </span>
+                    <span class="down-icon">
+                        <i class="fa fa-thumbs-down" aria-hidden="true">
+                            <div class="sub1 my-hidden">+1</div>
+                        </i>
+                    <span class="count">踩灭(<span class="down_count">{{ article.down_count }}</span>)</span>
+                    </span>
+                </div>
+
+                <!------------------------------------------评论框结束----------------------------------------------------------->
+                <div class="ui comments" >
+            {#评论标题#}
+            <div class="comment-title">评论区</div>
+            {#评论标题结束#}
+            {# 一条评论开始#}
+        <div id="comments">
+            {% for comment in comment_list %}
+                <div class="ui container segment">
+                    <div class="comment">
+                        {#评论人头像#}
+                        <a class="avatar1">
+                            <img src="/media/{{ comment.user.avatar }}">
+                        </a>
+                        {#评论人头像结束#}
+                        {#评论内容#}
+                        <div class="content">
+                            <input type="hidden" class="comment_id" value="{{ comment.pk }}">
+                            {#楼层#}
+                            <i class="fa fa-flag" aria-hidden="true"></i>
+                            {{ forloop.counter }}楼&nbsp;
+                            {#评论人昵称#}
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <a href="/{{ comment.user.blog.bottom_url }}" class="author">{{ comment.user.nick_name }}</a>
+                            {#评论人昵称结束#}
+                            {#评论时间#}
+                            <div class="metadata">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                <span class="date">{{ comment.create_time|date:'Y-m-d H:i:s' }}</span>
+                            </div>
+                            {#评论时间结束#}
+                            {#回复按钮#}
+                            <div     class="actions">
+                                <a class="reply" onclick="replyComment(this)">回复</a>
+                            </div>
+                            {#评论内容#}
+                            <div class="text">
+                                {{ comment.content }}
+
+                                <!---------------------子评论开始---------------------------->
+                                {% for son_comment in comment.comment_set.all %}
+                                    <div class="son-comment-box">
+                                        <input type="hidden" class="son-comment_id" value="{{ son_comment.pk }}">
+                                        <img src="/media/{{ son_comment.user.avatar }}">
+                                        <span class="author">{{ son_comment.user.nick_name }}</span>
+                                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                        {{ comment.user.nick_name }} ：{{ son_comment.content }}
+                                        <!------------------------对子回复的评论框-------------------------->
+                                        <div class="son-son-comment">
+                                            <textarea class="son-son-comment-area" placeholder="回复评论..."></textarea>
+                                            <button class="btn btn-info son-son-comment-btn"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
+                                        </div>
+                                        <!------------------------对子回复的评论框-------------------------->
+                                        <div class="son-reply-icon"><i class="fa fa-commenting-o" aria-hidden="true"></i></div>
+                                    </div>
+                                {% endfor %}
+                                 <!---------------------子评论结束---------------------------->
+
+                            </div>
+
+                            <div class="son-comment">
+                                <textarea class="son-comment-area" placeholder="回复评论..."></textarea>
+                                <button class="btn btn-info son-comment-btn"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
+                            </div>
+                            {#评论内容结束#}
+
+
+                            {#回复按钮结束#}
+
+                        </div>
+                        {#评论内容结束#}
+                    </div>
+
+                    {#一条评论结束#}
+                </div>
+
+            {% endfor %}
+
+
+</div>
+            <div class="ui reply form">
+                <div class="field">
+                    <textarea id="comment-area" placeholder="给博主说几句鼓励的话吧......"></textarea>
+                </div>
+                <button id="comment-btn" class="btn btn-info"><i class="fa fa-pencil-square-o"  aria-hidden="true"></i> 提交评论</button>
+            </div>
+        </div>
+        <div id="value_data" article_id="{{ article.pk }}"></div>
+
+    </div>
+            <!-------底部锚点-------->
+            <div id="bottom"></div>
+                <!-------------------------------------------------评论框结束---------------------------------------------------->
+
+                </div><!--end: topics 文章、评论容器-->
+            </div>
+            <a name="!comments"></a>
+            <div id="blog-comments-placeholder"></div>
+        </div><!--end: forFlow -->
+
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+
+
+

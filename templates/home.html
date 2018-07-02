@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>我的博客|首页</title>
+
+<script>
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+    <div id="mainContent">
+        {% if article_list.count == 0 %}
+            <div id="no-article-info">
+                <i class="fa fa-bed" aria-hidden="true"></i>
+                <div>博主正在睡瞌，暂时还没写博客</div>
+                <div>等他撸完自己就来撸代码了。。。</div>
+            </div>
+        {% endif %}
+
+        <div class="forFlow">
+
+            <!--done-->
+            <!------------------------------------------置顶博客列表开始----------------------------------------------------->
+           {% for article in sticky_article_list %}
+                <div class="day">
+
+                    <div class="postTitle">
+                        {% if article.password != '' %}
+                            <a class="postTitle2" href="javascript:void(0)" bottom_url="{{ bottom_url }}" article_id="{{ article.nid }}"
+                               onclick="showArticleDetail(this)">[置顶]{{ article.title }}
+                            </a>
+                            <i class="fa fa-lock password-inco" aria-hidden="true" title="该博客已上锁"></i>
+                        {% else %}
+                            <a class="postTitle2"
+                               href="{% url 'article_detail' bottom_url=bottom_url article_id=article.nid %}">[置顶]{{ article.title }}
+                            </a>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="postCon">
+                        <div class="c_b_p_desc">
+                            {% if article.password != '' %}
+                                <b>摘要:</b>本篇博客已加密，输入密码前无法预览.
+                            <a href="javascript:void(0)" onclick="showArticleDetail(this)">阅读全文</a></div>
+                        {% else %}
+                                <b>摘要:</b>{{ article.desc }}
+                                <a href="{% url 'article_detail' bottom_url=bottom_url article_id=article.nid %}">阅读全文</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+
+
+                    <div class="post-desc">
+                        <input type="hidden" value="{{ article.nid }}">
+{#                        <span hidden class="bottom_url" value="{{ bottom_url }}"></span>#}
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span class="post-desc">@{{ user.nick_name }}</span>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="post-desc">{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
+                        {% if request.user == user %}
+                            <a href="" rel="nofollow">编辑</a>
+                        {% endif %}
+                        <span class="comment-icon"><i class="fa fa-commenting" aria-hidden="true"></i></span>
+                        <span class="post-desc">评论</span><span class="up_count">({{ article.comment_count }})</span>
+
+                        <span class="up-icon">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"><div class="plus1 my-hidden">+1</div></i>
+                            <span class="up_desc">
+                                <span class="post-desc">点赞</span>
+                                (<span class="up_count">{{ article.up_count }}</span>)
+                            </span>
+                        </span>
+
+                    </div>
+               </div>
+                    <div class="clear"></div>
+            {% endfor %}
+
+
+            <!------------------------------------------置顶博客列表结束----------------------------------------------------->
+
+            <!------------------------------------------博客列表开始----------------------------------------------------->
+            {% for article in article_list %}
+                <div class="day">
+
+                    <div class="postTitle">
+                        {% if article.password != '' %}
+                            <a class="postTitle2" href="javascript:void(0)" bottom_url="{{ bottom_url }}" article_id="{{ article.nid }}"
+                               onclick="showArticleDetail(this)">{{ article.title }}
+                            </a>
+                            <i class="fa fa-lock password-inco" aria-hidden="true" title="该博客已上锁"></i>
+                        {% else %}
+                            <a class="postTitle2"
+                               href="{% url 'article_detail' bottom_url=bottom_url article_id=article.nid %}">{{ article.title }}
+                            </a>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="postCon">
+                        <div class="c_b_p_desc">
+                            {% if article.password != '' %}
+                                <b>摘要:</b>本篇博客已加密，输入密码前无法预览.
+                            <a href="javascript:void(0)" onclick="showArticleDetail(this)">阅读全文</a></div>
+                        {% else %}
+                                <b>摘要:</b>{{ article.desc }}
+                                <a href="{% url 'article_detail' bottom_url=bottom_url article_id=article.nid %}">阅读全文</a></div>
+                        {% endif %}
+                    </div>
+                    <div class="clear"></div>
+
+                
+                    <div class="post-desc">
+                        <input type="hidden" value="{{ article.nid }}">
+{#                        <span hidden class="bottom_url" value="{{ bottom_url }}"></span>#}
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span class="post-desc">@{{ user.nick_name }}</span>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="post-desc">{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
+                        {% if request.user == user %}
+                            <a href="" rel="nofollow">编辑</a>
+                        {% endif %}
+                        <span class="comment-icon"><i class="fa fa-commenting" aria-hidden="true"></i></span>
+                        <span class="post-desc">评论</span><span class="up_count">({{ article.comment_count }})</span>
+
+                        <span class="up-icon">
+                            <i class="fa fa-thumbs-up" aria-hidden="true"><div class="plus1 my-hidden">+1</div></i>
+                            <span class="up_desc">
+                                <span class="post-desc">点赞</span>
+                                (<span class="up_count">{{ article.up_count }}</span>)
+                            </span>
+                        </span>
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="bottom"></div>
+            {% endfor %}
+
+            <!---------------------分页--------------------------->
+            {% if  article_list%}
+                <div id='pagination' class="pull-right">
+                    <ul class="pagination">
+                       {{ page_html|safe }}
+                    </ul>
+                </div>
+            {% endif %}
+            <!---------------------分页--------------------------->
+            <!------------------------------------------博客列表结束----------------------------------------------------->
+            <!------------------------------------------博客密码模态框开始----------------------------------------------------->
+            <div class='modal-cover my-hidden'></div>
+            <div class="text-center lock-modal my-hidden">
+                <form name="pwdform" action="/article_pwd_valid" method="post">
+                {% csrf_token %}
+                    <i class="fa fa-lock fa-5x " aria-hidden="true"></i>
+                    <hr>
+                    <div class="input-group pwd-input">
+                        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        <input class="form-control" id="article-pwd" type="password" placeholder="Password">
+                    </div>
+                    <p></p>
+                    <p></p>
+                    <button id="pwd-submit-btn" class="btn btn-info" type="button">提交</button>
+                    <button id="closed-btn" class="btn btn-danger" type="button">关闭</button>
+                </form>
+            </div>
+            <!------------------------------------------博客密码模态框结束----------------------------------------------------->
+
+
+        </div><!--end: forFlow -->
+    </div><!--end: mainContent 主体内容容器-->
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('.comment-icon').on('click',function () {
+        var $cur_icon = $(this);
+        var article_id = $(this).parent().find('input').val()
+         location.href = '{{ bottom_url }}/article/'+article_id+'.html#bottom'
+    });
+    </script>
+{% endblock %}

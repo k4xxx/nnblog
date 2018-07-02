@@ -1,0 +1,87 @@
+{% extends 'manage/base.html' %}
+
+{% block head %}
+    <title>后台管理|博客管理</title>
+{% endblock %}
+
+{% block caogao_link %}active{% endblock %}
+
+{% block content %}
+
+    <!---------------------------管理博客页面开始---------------------------------->
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">管理博客</h3>
+                </div>
+                <div class="panel-body">
+                    <!-----------------博客列表开始---------------------------------->
+                    <table class="blog-table table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="title-td">博客标题</th>
+                            <th class="mycenter">密码</th>
+                            <th class="mycenter">编辑</th>
+                            <th class="mycenter">删除</th>
+                            <th class="mycenter">发布</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for drafts in data_list %}
+                        <tr>
+                            <input type="hidden" name="drafts_id" value="{{ drafts.nid }}">
+                            <td class="title-td"><a class="admin_blog_title" href="{% url 'article_detail' bottom_url=bottom_url article_id=drafts.nid %}">{{ drafts.title }}</a> </td>
+                            {% if not drafts.password %}
+                                <td class="zhaungtai-td"><i class="fa fa-unlock suo-btn" aria-hidden="true"></i></td>
+                            {% else %}
+                                <td class="zhaungtai-td"><i class="fa fa-lock suo-btn" aria-hidden="true"></i></td>
+                            {% endif %}
+                            <td class="edit-td"><a href="{% url 'article_manage' handle='update' article_id=drafts.nid %}{{ drafts.id }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            <td class="delete-td"><i class="fa fa-trash-o fa-lg delete-blog-icon"></i></td>
+                            <td class="fabu-td fabu-blog-icon"><i class="fa fa-plane fabu-btn" aria-hidden="true"></i></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+        <!---------------------------------------------分页开始------------------------------------------------->
+        <div class="topicListFooter text-center">
+            <ul class="pagination">
+                {{ page_html|safe }}
+             </ul>
+        </div>
+        <!---------------------------------------------分页结束------------------------------------------------->
+
+                    <!-----------------博客列表开始---------------------------------->
+                </div>
+            </div>
+    <!---------------------------管理博客页面结束---------------------------------->
+
+
+<!------------------------------置顶模态框开始------------------------------------->
+<div class="cover hiden"></div>
+{#<div class="fabu-modal hiden">#}
+{#    <div class="info">确定要发布此篇博客吗？</div>#}
+{#    <button class="btn btn-info">确定</button>#}
+{#    <button class="btn btn-danger fabu-close-btn">取消</button>#}
+{#</div>#}
+
+<div class="suo-modal hiden">
+    <form action="">
+        <div class="info">设置/取消密码</div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+            <input class="form-control" id="password" type="password" placeholder="Password">
+        </div>
+    <button type="button" class="btn btn-info set-pwd-btn">确定</button>
+    <button type="button" class="btn btn-danger suo-close-btn">取消</button>
+    </form>
+</div>
+<!------------------------------置顶模态框结束------------------------------------->
+{% endblock %}
+
+{% block script %}
+{#    <canvas id="c_n9" width="1920" height="990" style="position: fixed; top: 0px; left: 0px; z-index: -1; opacity: 0.5;"></canvas>#}
+{#    <script src="https://files.cnblogs.com/files/jingmoxukong/canvas-nest.min.js"></script>#}
+{% endblock %}
+

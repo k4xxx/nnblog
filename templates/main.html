@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name=author content="Designed Studio"/>
+		<meta name=description content="Designed Studio - Providing web consulting and web design services. Designing your Business for the Web"/>
+		<meta name=robots content="index,follow"/>
+		<meta name=title content="Web Consulting and Design Studio | Designed Studio">
+    <link href="{% static 'img/icon/icon.ico' %}" rel="shortcut icon" type="image/x-icon"/>
+    <!--[if IE]><link rel="shortcut icon" href="img/favicon.ico"><![endif]-->
+    <script src="{% static 'main/js/1.js' %}" async></script>
+
+    <title>牛奶博客园</title>
+
+    <!-- Awwwwards CSS -->
+{#    <link type="text/css" media="screen" rel="stylesheet" href="awwwards.css" />#}
+
+    <link rel="stylesheet" href="{% static 'main/css/first.css' %}" media="all">
+    <!-- <script src="js/baidu/html5shiv.js"></script> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'main/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Animate.css -->
+    <link href="{% static 'main/css/animate.css' %}" rel="stylesheet">
+
+    <!-- Pace -->
+    <link href="{% static 'main/css/pace.css' %}" rel="stylesheet">
+
+    <!-- ScrollFlow -->
+    <link href="{% static 'main/css/eskju.jquery.scrollflow.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS and js -->
+    <link href="{% static 'main/css/fullscreen-modals.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+
+<style>
+    body {
+  min-height: 2000px;
+  padding-top: 50px;
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+}
+</style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+    <script src="{% static 'main/js/baidu/jquery-1.8.1.min.js' %}"></script>
+		<!--<script src="js/baidu/skrollr.min.js"></script> -->
+     <script src="{% static 'main/js/baidu/jquery.iosslider.min.js' %}"></script>
+    <script src="{% static 'main/js/baidu/ui.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+
+            //boot();
+            initMainSlider();
+            //if (IEVersion()==false || IEVersion()>8) initMainAnimation();
+
+        });
+    </script>
+
+		<!--[if IE 8]>
+		<link rel="stylesheet" type="text/css" href="css/ie8.css" />
+		<![endif]-->
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="js/baidu/skrollr.ie.min.js"></script>
+        <![endif]-->
+
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="js/baidu/respond.min.js"></script>
+		<![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top blue-bg">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="./"><img src="{% static 'main/img/main/logo.png' %}"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#top">Home</a></li>
+            <li><a href="#section3">登录</a></li>
+            <li><a href="#section5">注册</a></li>
+            <li><a href="#section6">关于我们</a></li>
+            <li><a href="#section7">热门博客</a></li>
+            <li><a href="#section8">博文推荐</a></li>
+            <li><a href="/fuyong">站长博客</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal">联系我们</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <section id="section1" class="region region-1 align-center blue-bg">
+    	<div class="container">
+		    <h1 class="wow zoomIn">牛奶博客园</h1>
+		    <div class="desc wow zoomIn">
+		    	<p>Record your life, record your study, record your feelings, and record your world.</p>
+		    </div>
+        <img src="{% static 'main/img/main/first.png' %}" class="wow fadeInUp img-responsive center" data-wow-delay=".5s"/>
+      </div>
+    </section>
+
+    <section id="section2" class="region region-2 align-center">
+    	<div class="container">
+		    <h1 class="scrollflow -pop -opacity">遗失的美好</h1>
+		    <div class="scrollflow -slide-top -opacity desc">
+		      <p>有些事，终究要成为过去。就好比一朵花开的时光，明媚过后，就成为永久的怀念。 <br/>
+                  人生，总有几多失意和酸楚，往往心中最念想的，还是那些触动心灵的回忆。</p>
+        	  <p class="tagline">其实，每一个人都有一些不可改变的习惯，那就是怀念曾经，怀念最初的美好。 <br>
+                  或许，有的事我们不可忘记，那就淡淡的存着，就像某些不可言语的怀念…</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="section3" class="region region-5 blue-bg centerVert">
+    	<div class="container">
+    		<div class="col col-md-5 col-left detail">
+			    <h1 class="scrollflow -slide-right -opacity">Log in and start your performance.</h1>
+		      <div class="scrollflow -slide-left -opacity desc">
+			      <p>Record your life, record your study, record your feelings, and record your world.</p>
+			    </div>
+		    </div>
+		    <div class="scrollflow -pop -opacity col col-md-7 col-right">
+                <a href="/login"><img src="{% static 'main/img/main/login.jpg' %}" class="img-responsive center" /></a>
+		    </div>
+        <div id="popup-captcha"></div>
+
+        </div>
+    </section>
+
+
+
+    <section id="section4" class="region region-4 light-grey-bg centerVert">
+    	<div class="container">
+		    <div class="scrollflow -slide-right -opacity col col-md-7 col-md-push-5 detail">
+			    <h1>Photography, Videography & VT 180/360</h1>
+		      <div class="desc">
+			      <p>We provide photography, videography and 360 virtual tour experiences, where your customer feels he/she are in the photograph and can navigate around it, experiencing the locations as if they��re actually there.</p>
+			    </div>
+		    </div>
+    		<div class="scrollflow -slide-left -opacity col col-md-4 col-md-pull-7">
+					<img src="{% static 'main/img/Photography-and-Videography.png' %}" class="img-responsive center" />
+		    </div>
+      </div>
+    </section>
+
+
+    <section id="section5" class="region region-3 dark-grey-bg centerVert">
+    	<div class="container">
+    		<div class="col col-md-5 col-left detail">
+			    <h1 class="scrollflow -slide-bottom -opacity">Sign up and join us.</h1>
+		      <div class="scrollflow -slide-top -opacity desc">
+			    	<p>Here, you can be a listener, and you can be a confidant. You can learn other people's knowledge, and you can use your knowledge to irrigate others.</p>
+			    </div>
+		    </div>
+		    <div class="col col-md-7 col-right">
+		    	<a href="/register"><img src="{% static 'main/img/main/register.png' %}" class="scrollflow -pop -opacity img-responsive center" /></a>
+{#		    	<img src="{% static 'main/img/responsive-web-design.png' %}" class="scrollflow -pop -opacity img-responsive center" />#}
+		    </div>
+      </div>
+    </section>
+
+
+    <section id="section6" class="region region-7 light-grey-bg centerVert">
+    	<div class="container">
+    		<div class="col col-md-6 col-left">
+    			<div class="row">
+					 <div class="col-md-4"><a href="https://goo.gl/L6gK29" target="_blank"><img src="{% static 'main/img/drupal-legoland.png' %}" class="scrollflow -slide-top -opacity wow rubberBand img-responsive center" data-wow-iteration="2"/></a></div>
+					 <div class="col-md-8 detail">
+					 	<h2 class="scrollflow -slide-right -opacity">Drupal Legoland</h2>
+					 	<div class=" scrollflow -slide-top -opacity subscribe"><a href="https://goo.gl/eivrW0" target="_blank">Subscribe Channel</a></div>
+					 </div>
+					</div>
+		    </div>
+		    <div class="col col-md-6 col-right scrollflow -slide-left -opacity">
+			    <h1>Learn</h1>
+			    <div class="desc">
+			    	<p>Drupal LegoLand Channel is specially created to share with people about Drupal CMS. Our mission is to help more people to know and learn about Drupal CMS which is one of the best open source in the world. There are thousands and thousands of free modules ready to be used for building great site from small to large scale. Subscribe to the channel to get the latest update and video released.</p>
+			    </div>
+		    </div>
+      </div>
+    </section>
+
+
+    <section id="section7" class="region region-6 align-center">
+    	<div class="container">
+		    <h1 class="scrollflow -pop -opacity">私人定制.</h1>
+		    <div class="scrollflow -pop -opacity desc">
+		    	<p>We create & craft websites that ooze practicality in every aspect. Our goal is to drive sales and attract new customers to your business.</p>
+		    </div>
+        <img src="{% static 'main/img/web-design-studio.png' %}" class="scrollflow -slide-top -opacity img-responsive center" data-wow-delay=".5s" />
+      </div>
+    </section>
+
+
+    <section id="section8" class="region region-8 align-center">
+    	<div class="container">
+		    <h1 class="scrollflow -pop -opacity">Some of Our Clients</h1>
+		    <div class="scrollflow -slide-left -opacity desc">
+		    	<p>Here are some of our recent projects</p>
+		    </div>
+      </div>
+            <div class="grid">
+				  <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-gardenkl">
+				  		<img src="{% static 'main/img/portfolio/project/gardenkl-thumb.jpg' %}" alt="Virtual Tour 360" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>BOTANIC GARDEN, KL</h3>
+	                <span>VIRTUAL TOUR 360</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+				  <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-nosk">
+				  		<img src="{% static 'main/img/portfolio/project/nosk-thumb.jpg' %}" alt="NOSK Malaysia" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>NOSK MALAYSIA</h3>
+	                <span>WEB DESIGN, MALAYSIA</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+				  <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-alr">
+				  		<img src="{% static 'main/img/portfolio/project/alr-thumb.jpg' %}" alt="ALR Technologies Sdn Bhd" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>ALR TECHNOLOGIES SDN BHD</h3>
+	                <span>WEB DESIGN, MALAYSIA</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+
+
+                <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-gardenkl">
+				  		<img src="{% static 'main/img/portfolio/project/gardenkl-thumb.jpg' %}" alt="Virtual Tour 360" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>BOTANIC GARDEN, KL</h3>
+	                <span>VIRTUAL TOUR 360</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+				  <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-nosk">
+				  		<img src="{% static 'main/img/portfolio/project/nosk-thumb.jpg' %}" alt="NOSK Malaysia" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>NOSK MALAYSIA</h3>
+	                <span>WEB DESIGN, MALAYSIA</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+				  <div class="grid-item col-sm-6 col-md-4">
+				  	<a data-toggle="modal" data-target="#modal-alr">
+				  		<img src="{% static 'main/img/portfolio/project/alr-thumb.jpg' %}" alt="ALR Technologies Sdn Bhd" class="wow zoomIn">
+				  		<div class="caption">
+				  			<div class="inner">
+					  			<h3>ALR TECHNOLOGIES SDN BHD</h3>
+	                <span>WEB DESIGN, MALAYSIA</span>
+				  			</div>
+				  		</div>
+				  	</a>
+				  </div>
+         </div>
+
+<!-- Modals -->
+<div class="modal modal-fullscreen fade" id="modal-sabro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Sports Affairs Brochure</h3>
+      </div>
+      <div class="modal-body">
+	  <img class="img-responsive" src="{% static 'main/img/portfolio/project-full/sabro-full.jpg' %}" alt="Sports Affairs Brochure" width="1000">
+ A preview of our photography team shot used for Sports Affairs Brochure
+		<br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal modal-fullscreen fade" id="modal-gardenkl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">BOTANIC GARDEN KL</h3>
+      </div>
+      <div class="modal-body">
+	  <img class="img-responsive" src="img/portfolio/project-full/gardenkl-full.jpg" alt="Designed Studio Virtual Tour 360" width="1000">
+        An 360 Degrees View of Beautiful Botanic Garden KL. Powered with Gyro capabilities of smartphone to enhance the viewing experience.
+		<br>Go Ahead, take a dive and experience 360 Virtual Tour with your smartphone.
+		<br>
+        <a href="http://designedstudio.com/preview/gardenkl" target="_blank">Begin Virtual Tour</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-nosk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">NOSK MALAYSIA</h4>
+      </div>
+      <div class="modal-body">
+		<img class="img-responsive" src="img/portfolio/project-full/nosk-full.jpg" alt="NOSK Malaysia" width="1000">
+        NOSK was developed and designed with top Ear, Nose and Throat specialists to provide a natural aid to allergy and asthma sufferers.
+		Proven to reduce the inhalation of pollutants and allergens. NOSK provide natural relief for asthma and allergy sufferers.
+		Twin, soft nasal filters gently slip into the nostrils to help block and stop the substances that irritate and aggravate.
+		<br>
+		 <a href="http://nosk.com.my" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-alr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">ALR TECHNOLOGIES SDN BHD</h4>
+      </div>
+      <div class="modal-body">
+      <img class="img-responsive" src="img/portfolio/project-full/alr-full.jpg" alt="ALR Technologies Sdn Bhd" width="1000">
+        ALR TECHNOLOGIES SDN BHD is a leading and professional automation control products supplier and solutions company.
+		As an authorized distributor of GE products, ALR Technologies strive to provide excellent services to their customer through their highly
+		dedicated and experienced consulting team.
+		<br>
+		 <a href="http://alr.com.my" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-genius" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">GENIUS MIND DAMANSARA</h4>
+      </div>
+      <div class="modal-body">
+	    <img class="img-responsive" src="img/portfolio/project-full/genius-full.jpg" alt="Genius Mind Damansara" width="1000">
+        Genius Mind Damansara is an outlet in Bukit Utama doing brain enrichment for children and adults enhancing their 5 senses and improving their
+		reflexes and memory.
+		<br>
+		<a href="http://geniusminddamansara.com" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-iimat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">International Institute of Management and Technology (IIMAT)</h4>
+      </div>
+      <div class="modal-body">
+         <img class="img-responsive" src="img/portfolio/project-full/iimat-full.jpg" alt="IIMAT" width="1000">
+        IIMAT, International Institute of Management and Technology is a choice institution of higher learning that produces students capable of
+		exploring knowledge, displaying creative individualism and intellectual thinking and one that harness modern and updated resources in a
+		constantly changing and dynamic marketplace and also an institution that produces a quality yet affordable education.
+		<br>
+		<a href="http://iimat.edu.my" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-rjsilkcoat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">RJ SILKCOAT</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="img/portfolio/project-full/rjsilkcoat-full.jpg" alt="RJ Silkcoat" width="1000">
+       RJ Silkcaot specializes  in the application of  silkcoat mineral stones, silkplaster, ruloser, terasit, palace, mamarito, special effect paints,
+	   for design, protection and durability. Those are the product of Turkey and Italy. Also a solution for slippery floors. Mineral stones prevents heat
+	   from going through the concrete walls and therefore it  cools down the interior and save energy. Mineral stones are durable ,
+	   applied following the international standard , and a solution to the repainting.
+		<br>
+		<a href="http://rjsilkcoat.com.my" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-living" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">LIVING EDEN DESIGNS</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="img/portfolio/project-full/livingeden-full.jpg" alt="Living Eden Designs" width="1000">
+       Living Eden Designs is a one stop decorating resource for all your soft furnishing needs. They provide all kinds of soft furnishings and
+	   accessories such as curtains, upholstery, pelmets, valances, blinds, drapes, hooks, tassels and rods.
+		<br>
+		<a href="http://livingedendesigns.com" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-yyl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">YORK AND YORK LAWYERS</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="img/portfolio/project-full/yyl-full.jpg" alt="York and York Lawyers" width="1000">
+       York & York Legal is a boutique legal firm committed to building relationships with our clients, based on mutual trust and respect.
+	   We aim to deliver value-add commercial solutions founded on close understanding of our clients�� businesses and operations. We take pride in
+	   building proactive partnerships and networks, as well as using wide-ranging legal and commercial experience to
+	   achieve immediate and long-term results.
+		<br>
+		<a href="http://yyl.com.au" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-dat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">DATHERMARK MALAYSIA</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="img/portfolio/project-full/dathermark-full.jpg" alt="Dathermark Malaysia" width="1000">
+         Dathermark (M) Sdn. Bhd. began operation in 1993 and is currently an authorized distributor and reseller of international branded IT
+		 hardware and software such as Wizlearn, 3M, Dell, HP, Lenovo, Emerson, Epson, Canon, Sony, Cisco, Advocent, Polycom, Crestron,
+		 Microsoft,Symantec, Vmware, Citrix etc.
+		<br>
+		<a href="http://dathermark.com.my/" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal-fullscreen fade" id="modal-bee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">BEE THE ONE MUSIC EVENT</h4>
+      </div>
+      <div class="modal-body">
+        <img class="img-responsive" src="img/portfolio/project-full/bto-full.jpg" alt="Bee The One Music Event" width="1000">
+         Bee The One is a professional event planners comprising of young, fresh and creative musicians with a single goal: to deliver the best music
+		 event experience which include but not limited to concerts, corporate, music functions, weddings and many more.
+		<br>
+		<a href="http://beetheonemusicevent.com/" target="_blank">Visit Website</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </section>
+
+    <footer class="region blue-bg align-center">
+    	<div class="container wow zoomIn">
+		    <h1>Need us to setup an online presence for your business?</h1>
+		    <a class="btn" href="#" data-toggle="modal" data-target="#myModal">Get Started</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'main/js/1.11.3/jquery.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'main/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="{% static 'main/js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/js/eskju.jquery.scrollflow.min.js' %}"></script>
+    <script src="{% static 'main/js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.parallax.min.js' %}"></script>
+    <script src="{% static 'main/js/pace.min.js' %}"></script>
+    <script src="{% static 'main/js/validator.js' %}"></script>
+    <script src="{% static 'main/js/wow.min.js' %}"></script>
+    <script src="{% static 'main/js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'main/js/script.js' %}"></script>
+
+
+		<!-- Contact Us - Modal -->
+		<!-- Contact Us form modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">对我们有什么意见或者建议？欢迎联系我们</h4>
+      </div>
+      <div class="modal-body">
+{#          <h3>Designed Studio <span style="font-size:12px;">(002505696-T)</span></h3>#}
+{#	  <p>邮箱: <a href="mailto:136808069@qq.com">136808069@qq.com</a></p>#}
+	  <br>
+
+					<form id="contactForm" action="" method="POST" data-toggle="validator">
+					 <div class="form-group">
+					    <label for="fullname">姓名</label>
+					    <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Name" required>
+    					<div class="help-block with-errors"></div>
+					  </div>
+					  <div class="form-group">
+					    <label for="email">邮箱</label>
+					    <input type="email" class="form-control" name="email" placeholder="Email" id="email" required>
+    					<div class="help-block with-errors"></div>
+					  </div>
+					 <div class="form-group">
+					    <label for="subject">意见</label>
+					    <input type="text" class="form-control" name="subject" id="subject" required>
+    					<div class="help-block with-errors"></div>
+					  </div>
+					 <div class="form-group">
+					    <textarea class="form-control" rows="8" name="message" id="message" required></textarea>
+    					<div class="help-block with-errors"></div>
+					  </div>
+
+					 <div class="form-group hpot">
+					    <label for="subject">建议</label>
+					    <input type="text" class="form-control" name="honeypot" id="honeypot">
+    					<div class="help-block with-errors"></div>
+					  </div>
+					  <div class="form-group">
+					  	<input type="hidden" value="submit" name="action">
+					    <button type="button" id="call-us-btn" class="btn btn-primary">发送信息</button>
+					  </div>
+					</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Successful submission modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Thank You !</h4>
+      </div>
+      <div class="modal-body">
+        感谢您的意见和建议，我们会努力做到更好！
+      </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-close" data-dismiss="modal">不客气</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'main/js/my/my.js' %}"></script>
+
+
+<!-- If Email Successfully Sent -->
+
+
+  </body>
+</html>

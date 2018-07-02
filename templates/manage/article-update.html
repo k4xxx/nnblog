@@ -1,0 +1,85 @@
+{% extends 'manage/base.html' %}
+{% block head %}
+    {% load static %}
+    <title>后台管理|博客编辑</title>
+
+     <!--tinymce文本编辑器加载-->
+    <script src="{% static 'plugin/tinymce/js/tinymce/jquery.tinymce.min.js' %}"></script>
+    <script src="{% static 'plugin/tinymce/js/tinymce/tinymce.js' %}"></script>
+    <script src="{% static 'plugin/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+        <div id="user" username="{{ request.user.username }}"></div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">修改博客</h3>
+            </div>
+            <div class="panel-body">
+                <form id="updateArticleForm" class="edit-blog-form blog-form" method="post">
+                {% csrf_token %}
+                    <input type="hidden" name="id" id="article_id" value={{ article.nid }}>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
+                        <input class="form-control blog-title-inp" name="blog_title" type="text" value={{ article.title }} autocomplete="off">
+                    </div>
+                    <p></p>
+                <div id="article-area">
+                    <textarea id="blog_area" class="blog-content-inp" name="blog_content">
+                        {{ article.articledetail.content }}
+                    </textarea>
+                 </div>
+
+                    <div id="blog_category">为博客选择分类:<br>
+                                {% for category in category_list %}
+                                    <span class="category_checkbox">
+                                    <i class="fa fa-th-list fa-fw" aria-hidden="true"></i>
+                                     {% if category in article.category.all %}
+                                        {{ category.title }}<input type="checkbox" checked name="category"  data-size="mini" data-on-color="info"  data-handle-width="38"
+                                               data-off-color="primary" data-off-text="未选中" data-on-text="已选中" data-label-width="35" value={{ category.nid }}>
+                                     {% else %}
+                                         {{ category.title }}<input type="checkbox" name="category"  data-size="mini" data-on-color="info"  data-handle-width="38"
+                                                data-off-color="primary" data-off-text="未选中" data-on-text="已选中" data-label-width="35"  value={{ category.nid }}>
+                                     {% endif %}
+                                    </span>
+                                {% endfor %}
+                    </div>
+                    <div id='blog_pwd' class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        <input class="form-control" name="password" type="password" placeholder="为博客设置密码">
+                    </div>
+
+                    <div id="submit_btn">
+                        <div class="fluid ui buttons">
+                            <button type="button" id="update-drafts-article" class="ui blue  button blog-btn">存为草稿</button>
+                            <div class="or" data-text="or"></div>
+                            <button type="button" id="update-article" class="ui positive button blog-btn">修改博客</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}
+
+{% block script %}
+<!---------------文本编辑器-------------------->
+<script>
+tinyMCE.init({
+    mode: "textareas",
+    language: "zh_CN",
+    height:"600",
+    plugins: [
+        "link image media fullpage table autolink autoresize autosave bbcode charmap code codesample colorpicker compat3x " +
+        "contextmenu directionality emoticons fullscreen hr imagetools importcss insertdatetime legacyoutput lists nonbreaking" +
+        " noneditable pagebreak paste preview print save searchreplace spellchecker tabfocus template textcolor textpattern " +
+        "toc visualblocks visualchars wordcount"
+    ],
+    theme_advanced_buttons3_add : "fullpage"
+})
+</script>
+<!---------------文本编辑器-------------------->
+<script type="text/javascript">
+    $("[name='category']").bootstrapSwitch();
+</script>
+{% endblock %}

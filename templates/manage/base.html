@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--适应手机端-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+   <!--ico-->
+    <link href="{% static 'img/icon/icon.ico' %}" rel="shortcut icon" type="image/x-icon"/>
+    <!--ico-->
+    <!--semantic ui 框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/semantic/semantic.min.css">
+    <!--bootstrap框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugin/sweetalert/sweetalert.css">
+
+    <!--bootstrap switch选择框样式插件-->
+    <link rel="stylesheet" href="/static/plugin/switch/bootstrap-switch.min.css">
+
+    <!--awesme图标-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/awesome/css/font-awesome.min.css">
+    <!--toastr 弹出框框架-->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/toastr/toastr.min.css">
+
+
+
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+
+    <link href="/static/css/admin-frame.css" rel="stylesheet">
+    <!--调整sweetalert的h2文字的位置-->
+    <style type="text/css">
+        .animate~h2{
+            padding-top: 5px;
+        }
+
+
+    </style>
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">知识改变命运</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a>您好，{{ request.user.nick_name }}</a></li>
+                <li><a href="{% url 'logout' %}">退出</a></li>
+                <li><a href="{% url 'home_site' request.user.username %}" target="_blank">博客首页</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <!------------------------------------左侧内容结束------------------------------->
+    <div class="main">
+        <div id="left">
+            <div id="sidebar" class="list-group">
+                <a class="list-group-item {% block manage_link %}{% endblock %}" href="{% url 'manage' 'article' %}">
+                    <i class="fa fa-file-text fa-4x" aria-hidden="true"></i> <div class="admin-nav-font">博客管理</div></a>
+                <a class="list-group-item {% block post_link %}{% endblock %}" href="{% url 'article_manage' handle='add' article_id='' %}">
+                    <i class="fa fa-pencil-square fa-4x" aria-hidden="true"></i><span class="admin-nav-font"> 发表博客</span></a>
+                <a class="list-group-item {% block caogao_link %}{% endblock %}" href="{% url 'manage' 'drafts' %}">
+                    <i class="fa fa-file-archive-o fa-fw fa-3x" aria-hidden="true"></i><span class="admin-nav-font">博客草稿</span></a>
+                <a class="list-group-item {% block category_link %}{% endblock %}" href="{% url 'manage' 'category' %}">
+                    <i class="fa fa-th-list fa-fw fa-3x" aria-hidden="true"></i><span class="{% url 'manage' 'category' %}">分类管理</span></a>
+                 <a class="list-group-item {% block link_link %}{% endblock %}" href="{% url 'manage' 'friendlylink' %}">
+                    <i class="fa fa-paperclip fa-fw fa-3x" aria-hidden="true"></i><span class="admin-nav-font">链接管理</span></a>
+            <a class="list-group-item {% block user_link %}{% endblock %}" href="{% url 'manage' 'user' %}">
+                    <i class="fa fa-address-card fa-fw fa-3x" aria-hidden="true"></i><span class="admin-nav-font">信息管理</span></a>
+{#            <a class="list-group-item {% block info_link %}{% endblock %}" href="">#}
+{#                    <i class="fa fa-address-card fa-fw fa-3x" aria-hidden="true"></i><span class="admin-nav-font">信息管理</span></a>#}
+
+            </div>
+        </div>
+
+        <!------------------------------------右侧内容开始------------------------------->
+    <div id="right">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    </div>
+    <!------------------------------------右侧内容结束------------------------------->
+    <!--------------------------------------------------------------->
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/plugin/semantic/semantic.min.js"></script>
+    <script src="/static/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/plugin/switch/bootstrap-switch.min.js"></script>
+    <script src="/static/plugin/toastr/toastr.min.js"></script>
+    <script src="/static/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="/static/js/csrf-init.js"></script>
+    <script src="/static/js/admin.js"></script>
+
+    <!--------------------------------------------------------------->
+
+    {% block script %}
+    {% endblock %}
+</div>
+</body>
+</html>

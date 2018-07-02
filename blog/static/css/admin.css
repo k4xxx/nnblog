@@ -1,0 +1,292 @@
+body {
+    background-color: #d6d6d6;
+}
+
+.hiden {
+    display: none;
+}
+
+#left {
+    width: 100px;
+    position: fixed;
+    /*background-color: #00ACEE;*/
+    left: 0;
+    bottom: 0;
+    top: 50px;
+    padding-top: 50px;
+}
+
+#right {
+    position: fixed;
+    /*background-color: #10ee25;*/
+    background-image: url("/blog/static/img/bgpic/adminbgpic.jpg");
+    left: 60px;
+    right: 20px;
+    bottom: 0;
+    top: 50px;;
+    padding-top: 50px;
+    padding-left: 50px;
+    overflow: scroll;
+}
+
+#sidebar{
+ width: 90px;
+ margin-left: 5px;
+    background-color: rgb(40,40,40);
+}
+
+/*#adminlogo {*/
+    /*width: 89px;*/
+    /*height: 80px;*/
+    /*!*border: 1px solid gray;*!*/
+/*}*/
+
+.admin-nav-font {
+    font-size: 10px;
+}
+/*管理博客外层div样式*/
+.main-content{
+    margin-left: 130px;
+    /*background-color: rgba(61, 102, 249, 0.45);*/
+    padding-top: 22px;
+    padding-left: 30px;
+    /*padding-bottom: 13px;*/
+    /*height: 732px;*/
+    /*border: 2px solid green;*/
+}
+
+
+/*分类选择框*/
+#blog_category{
+    margin-top: 20px;
+    /*margin-bottom: 20px;*/
+}
+.category_checkbox{
+    /*display: inline;*/
+    margin-right: 30px;
+    margin-bottom: 10px;
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+    /*margin-top: 20px;*/
+
+    /*border: 1px dashed grey;*/
+}
+
+/*置顶按钮*/
+#zhiding-div{
+    margin-top: 20px;
+}
+
+#blog_pwd {
+    margin-top: 20px;
+}
+
+#submit_btn{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.title-td {
+    width: 80%;
+    /*height: 10px;*/
+}
+.mycenter,.edit-td,.delete-td,.zhiding-td,.fabu-td{
+    text-align: center;
+}
+
+.zhaungtai-td {
+    text-align: center;
+    font-size: 12px;
+}
+
+.edit-td i {
+    color: #00b0e8;
+}
+.delete-td i{
+    color: red;
+}
+
+.admin_blog_title {
+    text-decoration: none;
+}
+
+
+.cover {
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.zhiding-modal,
+.suo-modal,
+.fabu-modal{
+    background-color: white;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    height: 200px;
+    margin-left: -150px;
+    margin-top: -100px;
+    z-index: 999;
+    text-align: center;
+    border-radius: 5%;
+    padding-top: 20px;
+}
+
+.zhiding-modal .info,
+.fabu-modal .info{
+    font-size: 18px;
+    color: red;
+    border-bottom: 1px dashed grey;
+    margin-top: 15px;
+    padding-bottom: 15px;
+}
+
+.zhiding-modal button,
+.suo-modal button,
+.fabu-modal button{
+    margin-top: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.suo-modal .info{
+    font-size: 18px;
+    color: red;
+    border-bottom: 1px dashed grey;
+    padding-bottom: 5px;
+}
+
+.suo-modal .input-group{
+    width: 90%;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+/*分类管理页面*/
+.category-table .edit-td ,
+.category-table .delete-td {
+    width: 4%;
+}
+
+/*分类模态框*/
+.category-modal,
+.friendlink-modal{
+    background-color: white;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 300px;
+    margin-left: -250px;
+    margin-top: -150px;
+    z-index: 999;
+    text-align: center;
+    border-radius: 5%;
+    padding-top: 20px;
+}
+
+.category-modal .input-group,
+.friendlink-modal .input-group {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.category-info-area,
+.link-url-area {
+    width: 80%;
+    height: 120px;
+    margin-top: 15px;
+}
+
+#category-btn-group,
+#friend-btn-group{
+    width: 80%;
+    margin-top: 15px;
+}
+
+/*用户管理*/
+.update-card-left,.update-card-right {
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    padding: 20px;
+    border: 3px solid grey;
+    box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.3);
+    /*border-radius: 3%;*/
+}
+
+.update-card-left{
+    margin-left: 30px;
+    /*padding-top: 10px;*/
+}
+.update-card-left .input-group{
+    margin-bottom: 11px;
+    margin-left: 30px;
+    width: 90%;
+}
+.update-card-right .input-group{
+    /*margin-top: 10px;*/
+    margin-bottom: 20px;
+    margin-left: 30px;
+    width: 90%;
+}
+
+.info-title {
+    margin-left: 33px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.signature-area {
+    width: 100%;
+}
+
+#update-msg-btn ,
+#update-pwd-btn{
+    width: 90%;
+    margin-left: 33px;
+}
+
+.update-avatar {
+    position: relative;
+    left: 50%;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    border: 6px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.update-wechat {
+    position: relative;
+    left: 50%;
+    margin-left: -30px;
+    border: 1px solid rgba(0,0,0,0.2);
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+}
+.update-avatar img{
+    width: 200px;
+    height: 200px;
+}
+
+.update-wechat img{
+    width: 80px;
+    height: 80px;
+}
+
+#avatar-file-inp,#wechat-file-inp {
+    display: none;
+}
+
